@@ -1,0 +1,24 @@
+<?php
+$collection = $this->_getCollection(); 
+$collection->getSelect("*")->order("inkatia_blog_id DESC")->limit("5");
+$size = $collection->getSize();
+$data		= $collection->getData();
+?>
+<?php if($size>0): ?>
+<div class="inkatia-sidebar">
+	<div class="block block-list block-compare">
+	    <div class="block-title">
+	        <strong><span><?php echo $this->__("Latest Posts"); ?></span></strong>
+	    </div>
+	    <div class="block-content">
+           <?php foreach($data as $item ): ?>
+				<?php if($item['status']==1): ?>
+				<div class="inkatia-sidebar-item">
+					<a title="<?php echo $item['title']; ?>" alt="<?php echo $item['title']; ?>" href="<?php echo Mage::getBaseUrl().'blog/post/?id='.$item['inkatia_blog_id']; ?>"><?php echo $item['title']; ?></a>
+				</div>
+				<?php endif; ?>
+			<?php endforeach; ?>
+	     </div>
+	</div>
+</div>
+<?php endif; ?>

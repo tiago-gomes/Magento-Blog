@@ -1,0 +1,47 @@
+<?php 
+	$collection = $this->_getCollection(); 
+	$collection->getSelect("*")->order("inkatia_blog_id DESC")->limit("10");
+	$size = $collection->getSize();
+	$data		= $collection->getData(); 
+	$featured_image_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$item['featured_image'];
+?>
+<?php if($size>0): ?>
+	<div class="inkatia-latests">
+		<?php foreach($data as $item ): ?>
+			<?php if($item['status']==1): ?>
+			<div class="inkatia-post-item">
+				<div class="inkatia-post-title">
+					<h1><?php echo $item['title']; ?></h1>
+				</div>
+				<?php if(!empty($item['featured_image'])): ?>
+				<div class="inkatia-post-left">
+					<div class="inkatia-featured-image">
+						<img width="100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$item['featured_image']; ?>" alt="" title="" />
+					</div>
+				</div>
+				<div class="inkatia-post-content">
+					<div class="inkatia-post-info">
+						<?php $text = Mage::helper('blog')->_parceTinyMceText( $item['content_tinymce'], $item['inkatia_blog_id'] ); ?>
+						<?php echo $text; ?> -> published: <?php $date = explode(" ",$item['created_time']); echo $date[0]; ?>
+					</div>
+				</div>
+				<?php else: ?>
+					<div class="inkatia-post-info">
+						<?php $text = Mage::helper('blog')->_parceTinyMceText( $item['content_tinymce'], $item['inkatia_blog_id'] ); ?>
+						<?php echo $text; ?> -> published: <?php $date = explode(" ",$item['created_time']); echo $date[0]; ?>
+					</div>
+				<?php endif; ?>
+				<div class="inkatia-post-comments"></div>
+				<div class="div_clear"></div>
+			</div>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</div>
+	<?php echo $this->getPagerHtml(); ?>
+<?php else: ?>
+	<div class="inkatia-latests">
+		<div class="inkatia-post-item">
+			<?php echo $this->__('No available Posts at this time...'); ?>
+		</div>
+	</div>
+<?php endif; ?>

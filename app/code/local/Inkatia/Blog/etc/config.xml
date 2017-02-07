@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<config>
+
+	<modules>
+		<Inkatia_Blog>
+			<version>0.1.0</version>
+		</Inkatia_Blog>
+	</modules>
+	
+	 <admin>
+        <routers>
+            <blog>
+                <use>admin</use>
+                <args>
+                    <module>Inkatia_Blog</module>
+                    <frontName>blog</frontName>
+                </args>
+            </blog>
+        </routers>
+    </admin>
+	
+	<adminhtml>
+        <menu>
+            <blog module="blog">
+                <title>Inkatia Blog</title>
+                <sort_order>71</sort_order>               
+                <children>
+                    <items module="blog">
+                        <title>Manage Blog Posts</title>
+                        <sort_order>0</sort_order>
+                        <action>blog/adminhtml_blog</action>
+                    </items>
+                </children>
+            </blog>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <blog>
+                            <title>Blog Posts</title>
+                            <sort_order>200</sort_order>
+                        </blog>
+                    </children>
+                </admin>
+            </resources>   
+        </acl>
+        <layout>
+            <updates>
+                <blog>
+                    <file>inkatia_blog.xml</file>
+                </blog>
+            </updates>
+        </layout>
+    </adminhtml>
+	
+	<frontend>
+		<routers>
+		   <blog>
+			   <use>standard</use>
+			   <args>
+				   <module>Inkatia_Blog</module>
+				   <frontName>blog</frontName>
+			   </args>
+		   </blog>
+		</routers>
+		<layout>
+			  <updates>
+				  <blog module="Inkatia_Blog">
+					  <file>inkatia_blog.xml</file>
+				  </blog>
+			  </updates>
+		</layout>
+	</frontend>
+	
+	<global>
+		<models>
+			<blog>
+				<class>Inkatia_Blog_Model</class>
+				 <resourceModel>blog_mysql4</resourceModel>
+			</blog>
+			<blog_mysql4>
+                <class>Inkatia_Blog_Model_Mysql4</class>
+                <entities>
+                    <blog>
+                        <table>inkatia_blog</table>
+                    </blog>
+                </entities>
+            </blog_mysql4>
+		</models>
+		<resources>
+            <blog_setup>
+                <setup>
+                    <module>Inkatia_Blog</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </blog_setup>
+            <blog_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </blog_write>
+            <blog_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </blog_read>
+        </resources>
+		<helpers>
+			<blog>
+				<class>Inkatia_Blog_Helper</class>
+			</blog>
+		</helpers>
+		<blocks>
+		    <blog>
+				<class>Inkatia_Blog_Block</class>
+			</blog>
+		</blocks>
+	</global>
+	
+</config>

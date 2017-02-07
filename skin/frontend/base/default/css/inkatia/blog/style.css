@@ -1,0 +1,25 @@
+.div_clear{ clear: both; }
+/* latests */
+.inkatia-latests{ width: 100%;}
+.inkatia-post-item{margin: 0 0 5px;}
+.inkatia-post-title{ }
+.inkatia-post-date{ float: left; width: 10%; padding: 10px 0 0 5px; }
+.inkatia-post-title h1{ border-bottom: 1px solid; }
+.inkatia-featured-image{margin: 0 0 5px;}
+.inkatia-post-info{margin: 10px 0 5px 0; }
+.inkatia-post-left{ width: 150px; float: left; }
+.inkatia-post-content{ width: 70%; float: left; padding: 10px; }
+
+.inkatia-post-comments{}
+
+/* sidebar */
+.inkatia-sidebar{}
+.inkatia-sidebar-title{}
+.inkatia-sidebar-item{padding: 5px 5px 10px 10px;}
+.inkatia-sidebar-item a{  }
+
+/* archive */
+.inkatia-archive{margin: 10px 5px 10px 5px;}
+.inkatia-archive-title{}
+.inkatia-archive-item{padding: 2px;}
+.inkatia-archive-item a{ }

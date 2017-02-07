@@ -1,0 +1,25 @@
+<?php 
+$id = $this->getRequest()->getParam('id');
+if( is_numeric($id) ):
+	$item = $this->_getModel(); 
+	$item->load($id)->getData();
+	$featured_image_url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$item['featured_image'];
+?>
+<div class="inkatia-latests">
+	<div class="inkatia-post-item">
+		<div class="inkatia-post-title">
+			<h1><?php echo $item['title']; ?></h1>
+		</div>
+		<?php if(!empty($item['featured_image'])): ?>
+			<div class="inkatia-featured-image">
+				<img width="100%" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$item['featured_image']; ?>" alt="" title="" />
+			</div>
+		<?php endif; ?>
+		<div class="inkatia-post-info">
+			<?php echo $item['content_tinymce']; ?> -> published: <?php $date = explode(" ",$item['created_time']); echo $date[0]; ?>
+		</div>
+		<div class="inkatia-post-comments"></div>
+		<div class="div_clear"></div>
+	</div>
+</div>
+<?php endif; ?>

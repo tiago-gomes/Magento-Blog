@@ -1,0 +1,9 @@
+# by github
+.modgit/
+*.*~
+.git
+.project
+.buildpath
+.settings
+*.php~
+*.phtml~

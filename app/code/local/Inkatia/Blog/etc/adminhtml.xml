@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <blog module="blog">
+            <title>Manage Inkatia Blog</title>
+            <sort_order>71</sort_order>               
+            <children>
+                <items module="blog">
+                    <title>Manage Posts</title>
+                    <sort_order>0</sort_order>
+                    <action>blog/adminhtml_blog</action>
+                </items>
+            </children>
+        </blog>
+    </menu>
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <admin>
+                <children>
+                    <blog>
+                        <title>Inkatia Blog</title>
+                        <sort_order>200</sort_order>
+                    </blog>
+                </children>
+            </admin>
+        </resources>   
+    </acl>
+    <layout>
+        <updates>
+            <blog>
+                <file>inkatia_blog.xml</file>
+            </blog>
+        </updates>
+    </layout>
+</config>
